@@ -130,6 +130,8 @@
     <string name="internal_storage">The zip is stored in:\n[Internal Storage]%1$s</string>
     <string name="zip_process_title">Processing</string>
     <string name="manual_boot_image">Please manually select a boot image!</string>
+    <string name="manager_update_title">New Magisk Manager Update Available!</string>
+    <string name="manager_download_install">Press to download and install</string>
 
     <!--Settings Activity -->
     <string name="settings_general_category">General</string>
@@ -172,6 +174,14 @@
     <string name="owner_manage_summary">Only owner can manage root access and receive request prompts</string>
     <string name="user_indepenent_summary">Each user has its own separate root rules</string>
     <string name="multiuser_hint_owner_request">A request has been sent to the device owner. Please switch to the owner and grant the permission</string>
+
+    <string name="mount_namespace_mode">Mount Namespace Mode</string>
+    <string name="settings_ns_global">Global Namespace</string>
+    <string name="settings_ns_requester">Inherit Namespace</string>
+    <string name="settings_ns_isolate">Isolated Namespace</string>
+    <string name="global_summary">All root sessions use the global mount namespace</string>
+    <string name="requester_summary">Root sessions will inherit its requester\'s namespace</string>
+    <string name="isolate_summary">Each root session will have its own isolated namespace</string>
 
     <string name="settings_development_category">App Development</string>
     <string name="settings_developer_logging_title">Enable advanced debug logging</string>

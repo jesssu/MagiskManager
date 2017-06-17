@@ -28,8 +28,6 @@ public class MagiskManager extends Application {
     public static final String UNINSTALLER = "magisk_uninstaller.sh";
     public static final String INTENT_SECTION = "section";
     public static final String BUSYBOX_VERSION = "1.26.2";
-    public static final String ROOT_ACCESS_PROP = "persist.magisk.root";
-    public static final String MULTIUSER_MODE_PROP = "persist.magisk.multiuser";
     public static final String MAGISKHIDE_PROP = "persist.magisk.hide";
     public static final String DISABLE_INDICATION_PROP = "ro.magisk.disable";
 
@@ -49,6 +47,9 @@ public class MagiskManager extends Application {
     public int remoteMagiskVersionCode = -1;
     public String magiskLink;
     public String releaseNoteLink;
+    public String remoteManagerVersionString;
+    public int remoteManagerVersionCode = -1;
+    public String managerLink;
     public SafetyNetHelper.Result SNCheckResult;
     public String bootBlock = null;
     public boolean isSuClient = false;
@@ -76,6 +77,7 @@ public class MagiskManager extends Application {
     public int multiuserMode;
     public int suResponseType;
     public int suNotificationType;
+    public int suNamespaceMode;
 
     // Global resources
     public SharedPreferences prefs;
@@ -136,6 +138,7 @@ public class MagiskManager extends Application {
                 .putString("su_notification", String.valueOf(suNotificationType))
                 .putString("su_access", String.valueOf(suAccessState))
                 .putString("multiuser_mode", String.valueOf(multiuserMode))
+                .putString("mnt_ns", String.valueOf(suNamespaceMode))
                 .putString("busybox_version", BUSYBOX_VERSION)
                 .apply();
         // Add busybox to PATH
@@ -163,6 +166,7 @@ public class MagiskManager extends Application {
         if (isSuClient) {
             suAccessState = suDB.getSettings(SuDatabaseHelper.ROOT_ACCESS, 3);
             multiuserMode = suDB.getSettings(SuDatabaseHelper.MULTIUSER_MODE, 0);
+            suNamespaceMode = suDB.getSettings(SuDatabaseHelper.MNT_NS, 1);
         }
     }
 
